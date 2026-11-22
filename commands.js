@@ -22,8 +22,8 @@ const commands = [
     },
     {
         category: "テイム",
-        name: "ForceTame",
-        command: "cheat ForceTame",
+        name: "DoTame",
+        command: "cheat DoTame",
         description: "対象生物を強制テイムします。",
         example: "cheat ForceTame"
     },
