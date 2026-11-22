@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASA GOD コマンド集</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>🦖 ASA GOD コマンド集</h1>
+
+        <div>
+            総コマンド数：
+            <span id="commandCount">0</span>
+        </div>
+
+    </header>
+
+    <div class="container">
+
+        <!-- サイドメニュー -->
+        <aside class="sidebar">
+
+            <button class="menu-btn active"
+                    data-page="commands">
+                📖 コマンド一覧
+            </button>
+
+            <button class="menu-btn"
+                    data-page="colors">
+                🎨 カラー一覧
+            </button>
+
+            <button class="menu-btn"
+                    data-page="convenience">
+                🛠️ 便利
+            </button>
+
+            <button class="menu-btn"
+                    data-page="dinos">
+                🦕 生物検索
+            </button>
+
+            <button class="menu-btn"
+                    data-page="items">
+                📦 アイテム検索
+            </button>
+
+            <button class="menu-btn"
+                    data-page="favorites">
+                ⭐ お気に入り
+            </button>
+
+            <button class="menu-btn"
+                    data-page="history">
+                📋 コピー履歴
+            </button>
+
+        </aside>
+
+        <!-- メインエリア -->
+        <main>
+
+            <!-- コマンド画面 -->
+            <section id="commandsPage"
+                     class="page active-page">
+
+                <div class="search-section">
+
+                    <input
+                        type="text"
+                        id="globalSearch"
+                        placeholder="コマンド検索..."
+                    >
+
+                </div>
+
+                <div id="commandList"></div>
+
+            </section>
+
+            <!-- カラー -->
+            <section id="colorsPage"
+                     class="page">
+
+                <div class="page-header">
+                    <h2>🎨 カラー一覧</h2>
+                    <span id="colorCount" class="count-label">0色</span>
+                </div>
+
+                <div class="search-section">
+                    <input
+                        type="text"
+                        id="colorSearch"
+                        placeholder="カラーID・カラー名で検索（例: 72, Cream, Blue）..."
+                    >
+                </div>
+
+                <div id="colorList"></div>
+
+            </section>
+
+            <!-- 便利 -->
+            <section id="conveniencePage"
+                     class="page">
+
+                <h2>🛠️ 便利</h2>
+                <div id="convenienceList"></div>
+
+            </section>
+
+            <!-- 生物 -->
+            <section id="dinosPage"
+                     class="page">
+
+                <div class="page-header">
+                    <h2>🦕 生物検索</h2>
+                    <span id="dinoCount" class="count-label">0体</span>
+                </div>
+
+                <div class="search-section">
+                    <input
+                        type="text"
+                        id="dinoSearch"
+                        placeholder="生物名（日本語・英語）・マップ・気質で検索..."
+                    >
+                    <div class="filter-row" id="dinoTameFilter">
+                        <button type="button" class="filter-chip active" data-tame="all">すべて</button>
+                        <button type="button" class="filter-chip" data-tame="tameable">テイム可能</button>
+                        <button type="button" class="filter-chip" data-tame="untameable">テイム不可能</button>
+                    </div>
+                    <div class="level-row">
+                        <label for="dinoLevelInput" class="level-label">召喚レベル:</label>
+                        <input
+                            type="number"
+                            id="dinoLevelInput"
+                            class="level-input"
+                            min="1"
+                            max="9999"
+                            value="150"
+                        >
+                    </div>
+                </div>
+
+                <div id="dinoList"></div>
+
+            </section>
+
+            <!-- アイテム -->
+            <section id="itemsPage"
+                     class="page">
+
+                <h2>📦 アイテム検索</h2>
+
+            </section>
+
+            <!-- お気に入り -->
+            <section id="favoritesPage"
+                     class="page">
+
+                <h2>⭐ お気に入り</h2>
+                <div id="favoriteList"></div>
+
+            </section>
+
+            <!-- 履歴 -->
+            <section id="historyPage"
+                     class="page">
+
+                <div class="page-header">
+                    <h2>📋 コピー履歴</h2>
+                    <button type="button" id="clearHistoryBtn" class="secondary-btn">
+                        🗑️ 履歴を削除
+                    </button>
+                </div>
+                <div id="historyList"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="commands.js"></script>
+    <script src="colors.js"></script>
+    <script src="dinos.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,546 @@
+/* ===== 全体 ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(160deg, #0d1117, #161b22);
+    color: #f0f6fc;
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+}
+
+/* ===== ヘッダー ===== */
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(90deg, #00b894, #0984e3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .4);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+#commandCount {
+    color: #ffe066;
+    font-weight: bold;
+}
+
+/* ===== 検索 ===== */
+
+section {
+    padding: 20px;
+}
+
+#globalSearch,
+#colorSearch,
+#dinoSearch {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    outline: none;
+    transition: .3s;
+}
+
+#globalSearch:focus,
+#colorSearch:focus,
+#dinoSearch:focus {
+    border-color: #00d9a6;
+    box-shadow: 0 0 15px rgba(0, 217, 166, .5);
+}
+
+.search-section {
+    margin-bottom: 20px;
+}
+
+/* ===== コマンド一覧 ===== */
+
+#commandList {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ===== コマンドカード ===== */
+
+.command-card {
+    background: linear-gradient(180deg, #1b2430, #161d29);
+    border: 1px solid #2f3b4d;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: .3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .3);
+}
+
+.command-card:hover {
+    transform: translateY(-3px);
+    border-color: #00d9a6;
+    box-shadow: 0 6px 25px rgba(0, 217, 166, .2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.command-card h3 {
+    color: #00e5a8;
+    margin-bottom: 0;
+}
+
+.category-badge {
+    background: rgba(0, 217, 166, 0.15);
+    color: #00e5a8;
+    border: 1px solid rgba(0, 217, 166, 0.4);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: bold;
+}
+
+.command-card p {
+    color: #d0d7de;
+    margin-bottom: 15px;
+}
+
+/* ===== コマンド表示 ===== */
+
+.command-card code {
+    display: block;
+    background: #0d1117;
+    color: #00ff88;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: Consolas, monospace;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+
+/* ===== ボタン ===== */
+
+button {
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 217, 166, .5);
+}
+
+/* ===== 区切り線 ===== */
+
+hr {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid #30363d;
+}
+
+/* ===== スクロールバー ===== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00b894;
+    border-radius: 20px;
+}
+
+/* ===== レイアウト ===== */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* サイドバー */
+
+.sidebar {
+    width: 260px;
+    background: #111827;
+    padding: 20px;
+    border-right: 1px solid #374151;
+}
+
+/* メニューボタン */
+
+.menu-btn {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 14px;
+    background: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.menu-btn:hover {
+    background: #00b894;
+    transform: translateX(5px);
+}
+
+.menu-btn.active {
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 217, 166, .4);
+}
+
+/* メイン */
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* ページ切り替え */
+
+.page {
+    display: none;
+}
+
+.active-page {
+    display: block;
+}
+
+/* カラー一覧（縦1列表示） */
+
+.color-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.color-card {
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: .3s;
+}
+
+.color-card:hover {
+    border-color: #00d9a6;
+    transform: translateX(3px);
+}
+
+.color-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 2px solid #ffffff22;
+    flex-shrink: 0;
+}
+
+.color-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.color-id {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.color-name {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.color-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.mini-btn {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.count-label {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+/* ===== 生物検索 ===== */
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.filter-chip {
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: #d1d5db;
+    padding: 7px 14px;
+    font-size: 0.88rem;
+    border-radius: 999px;
+}
+
+.filter-chip:hover {
+    border-color: #00d9a6;
+    color: #ffffff;
+    transform: none;
+    box-shadow: none;
+}
+
+.filter-chip.active {
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.level-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.level-label {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.level-input {
+    width: 110px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    outline: none;
+}
+
+.level-input:focus {
+    border-color: #00d9a6;
+}
+
+.dino-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.dino-card {
+    background: linear-gradient(180deg, #1b2430, #161d29);
+    border: 1px solid #2f3b4d;
+    border-radius: 14px;
+    padding: 16px 20px;
+    transition: .3s;
+}
+
+.dino-card:hover {
+    border-color: #00d9a6;
+    transform: translateX(3px);
+}
+
+.dino-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.dino-name-ja {
+    color: #00e5a8;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.dino-name-en {
+    color: #9ca3af;
+    font-size: 0.92rem;
+    margin-left: 8px;
+}
+
+.dino-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #d0d7de;
+}
+
+.dino-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    padding: 3px 10px;
+    border-radius: 8px;
+}
+
+.dino-note {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.dino-cmd-preview {
+    display: block;
+    background: #0d1117;
+    color: #00ff88;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.dino-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ===== お気に入り・コピー履歴 ===== */
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.fav-btn {
+    background: #1f2937;
+    border: 1px solid #4b5563;
+    color: #e5e7eb;
+}
+
+.fav-btn:hover {
+    border-color: #ffd60a;
+    box-shadow: 0 0 12px rgba(255, 214, 10, 0.35);
+}
+
+.fav-btn.active {
+    background: linear-gradient(90deg, #f59e0b, #ffd60a);
+    color: #111827;
+    border-color: transparent;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.secondary-btn {
+    background: #374151;
+    color: #f9fafb;
+}
+
+.secondary-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.4);
+}
+
+.history-item {
+    background: linear-gradient(180deg, #1b2430, #161d29);
+    border: 1px solid #2f3b4d;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+}
+
+.history-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.history-item code {
+    display: block;
+    background: #0d1117;
+    color: #00ff88;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    word-break: break-all;
+}
+
+/* ===== モバイル ===== */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .command-card {
+        padding: 15px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #374151;
+    }
+}
+
+@media (max-width: 600px) {
+    .color-card {
+        flex-wrap: wrap;
+    }
+
+    .color-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
